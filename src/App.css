@@ -1,0 +1,13 @@
+@font-face {
+    font-family:  Love_Ya_Like_A_Sister;
+    src: url('../Love_Ya_Like_A_Sister/LoveYaLikeASister-Regular.woff') format('truetype');
+}
+
+body {
+    background-color: #ffeac7;
+}
+
+h1 {
+    font-family: Love_Ya_Like_A_Sister;
+    text-align: center;
+}
