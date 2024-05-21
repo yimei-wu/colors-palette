@@ -2,7 +2,7 @@
 
 <img src="./src/assets/icon-palette.jpeg" alt="image-icon-palette" width="auto" height="200">
 
-## Definition
+## Description
 
 As the title says, it's a colors palette generator, with a previous multi-step-form where you're asked about your preferences. The form is composed in three steps.
 
