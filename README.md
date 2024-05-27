@@ -4,7 +4,7 @@
 
 ## Description
 
-As the title says, it's a colors palette generator, with a previous multi-step-form where you're asked about your preferences. The form is composed in three steps.
+As the title says, it's a colors palette generator, with a previous multi-step-form where you're asked about your preferences. The form is composed in two steps.
 
 ### Step 1: General Preferences
 
@@ -29,13 +29,3 @@ As the title says, it's a colors palette generator, with a previous multi-step-f
 2. Do you have any other specific colors you'd like to include? (optional)
 
 - Answer: Color input (color picker) for multiple colors
-
-### Step 3: Tone and Saturation
-
-1. Do you prefer more vivid or pastel colors?
-
-- Answer: Vivid, Pastel, Both
-
-2. Do you want to include dark or light colors in the palette?
-
-- Answer: Light, Dark, Both
