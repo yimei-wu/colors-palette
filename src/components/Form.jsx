@@ -1,10 +1,11 @@
-const Form = ({ setPalette }) => {
+const Form = ({ setPalette, setSeedColor }) => {
   async function handleSubmit(ev) {
     ev.preventDefault();
 
     const baseColorMode =
       ev.target.baseColor.options[ev.target.baseColor.selectedIndex].value;
     const color = ev.target.color.value;
+
     const schemeMode =
       ev.target.mode.options[ev.target.mode.selectedIndex].value;
     const count = ev.target.count.value;
@@ -18,6 +19,7 @@ const Form = ({ setPalette }) => {
       .then((response) => response.json())
       .then((data) => {
         setPalette(data.colors);
+        setSeedColor(color);
       })
       .catch((error) => console.error("Error:", error));
   }
