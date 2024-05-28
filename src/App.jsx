@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ColorsPalette from "./components/ColorsPalette";
 import "./App.css";
+import Form from "./components/Form";
 
 function App() {
   // const [colors, setColors] = useState([
@@ -53,9 +54,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Colors Palette</h1>
+      {/* <h1>Colors Palette</h1>
       <ColorsPalette colors={color} />
-      <button onClick={updateColorsPalette}>New Palette</button>
+      <button onClick={updateColorsPalette}>New Palette</button> */}
+      <Form />
     </div>
   );
 }
