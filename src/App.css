@@ -14,12 +14,12 @@ h1 {
   font-family: Love_Ya_Like_A_Sister;
   text-align: center;
 }
-.App {
+/* .App {
   text-align: center;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-}
+} */
 
 button {
   margin-top: 50px;

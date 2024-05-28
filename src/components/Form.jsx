@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-const Form = () => {
-  const [palette, setPalette] = useState([]);
-
+const Form = ({ setPalette }) => {
   async function handleSubmit(ev) {
     ev.preventDefault();
 
@@ -26,7 +22,6 @@ const Form = () => {
       .catch((error) => console.error("Error:", error));
   }
 
-  console.log(palette);
   return (
     <form onSubmit={(ev) => handleSubmit(ev)} className="form">
       <fieldset>
