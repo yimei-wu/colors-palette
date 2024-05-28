@@ -1,27 +1,15 @@
 import { useState } from "react";
-import "./App.css";
 import Form from "./components/Form";
+import ColorsPalette from "./components/ColorsPalette";
+import "./App.css";
 
 function App() {
   const [palette, setPalette] = useState([]);
-
-  console.log(palette);
   return (
     <div className="App">
+      <h1>Colors Palette</h1>
       <Form setPalette={setPalette} />
-      <div className="palette-container">
-        {palette.length > 0 && (
-          <>
-            {palette.map((color, index) => {
-              return (
-                <div key={index}>
-                  <h1>draw the color</h1>
-                </div>
-              );
-            })}
-          </>
-        )}
-      </div>
+      <ColorsPalette palette={palette} />
     </div>
   );
 }
