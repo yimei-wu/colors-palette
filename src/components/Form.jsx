@@ -3,13 +3,18 @@ import React from "react";
 const Form = () => {
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    console.log("hello there");
+    const baseColorMode =
+      ev.target.baseColor.options[ev.target.baseColor.selectedIndex].value;
+    const color = ev.target.color.value;
+    const schemeMode =
+      ev.target.mode.options[ev.target.mode.selectedIndex].value;
+    const count = ev.target.count.value;
+    console.log(baseColorMode, color, schemeMode, count);
   };
   return (
     <form onSubmit={(ev) => handleSubmit(ev)} className="form">
       <fieldset>
         <legend>Base color</legend>
-
         <select name="baseColor" id="baseColor">
           <option value="cmyk">cmyk</option>
           <option value="hsl">hsl</option>
@@ -18,10 +23,10 @@ const Form = () => {
             rgb
           </option>
         </select>
-        <input type="text" />
+        <input type="text" name="color" id="color" required />
       </fieldset>
       <label htmlFor="mode">Choose a scheme mode</label>
-      <select name="mode" id="mode">
+      <select name="mode" id="mode" required>
         <option value="monochrome">monochrome</option>
         <option value="monochrome-dark">monochrome-dark</option>
         <option value="monochrome-light">monochrome-light</option>
@@ -32,7 +37,7 @@ const Form = () => {
         <option value="quad">quad</option>
       </select>
       <label htmlFor="count">How many colors in the scheme</label>
-      <input name="count" id="count" type="number" min={2} max={6} />
+      <input name="count" id="count" type="number" min={2} max={6} required />
       <input type="submit" value="Submit" />
     </form>
   );
