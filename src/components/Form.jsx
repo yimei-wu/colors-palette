@@ -1,16 +1,32 @@
-import React from "react";
+import { useState } from "react";
 
 const Form = () => {
-  const handleSubmit = (ev) => {
+  const [palette, setPalette] = useState([]);
+
+  async function handleSubmit(ev) {
     ev.preventDefault();
+
     const baseColorMode =
       ev.target.baseColor.options[ev.target.baseColor.selectedIndex].value;
     const color = ev.target.color.value;
     const schemeMode =
       ev.target.mode.options[ev.target.mode.selectedIndex].value;
     const count = ev.target.count.value;
-    console.log(baseColorMode, color, schemeMode, count);
-  };
+
+    await fetch(
+      `https://www.thecolorapi.com/scheme?${baseColorMode}=${color}&format=json&mode=${schemeMode}&count=${count}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setPalette(data.colors);
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
+  console.log(palette);
   return (
     <form onSubmit={(ev) => handleSubmit(ev)} className="form">
       <fieldset>
