@@ -18,6 +18,11 @@ const Form = ({ setPalette }) => {
       .then((response) => response.json())
       .then((data) => {
         setPalette(data.colors);
+
+        console.log(data.colors, [
+          ...data.colors,
+          { hex: { value: "#" + color } },
+        ]);
       })
       .catch((error) => console.error("Error:", error));
   }
