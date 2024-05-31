@@ -36,9 +36,9 @@ const Form = ({ setPalette }) => {
           <option value="hex" defaultValue>
             hex
           </option>
-          <option value="cmyk">cmyk</option>
+          {/* <option value="cmyk">cmyk</option>
           <option value="hsl">hsl</option>
-          <option value="rgb">rgb</option>
+          <option value="rgb">rgb</option> */}
         </select>
       </fieldset>
 
