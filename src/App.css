@@ -1,60 +1,85 @@
 @font-face {
-    font-family:  Love_Ya_Like_A_Sister;
-    src: url('../Love_Ya_Like_A_Sister/LoveYaLikeASister-Regular.woff') format('truetype');
+  font-family: Love_Ya_Like_A_Sister;
+  src: url("../Love_Ya_Like_A_Sister/LoveYaLikeASister-Regular.woff")
+    format("truetype");
 }
 
 body {
-    background-color: #fffbf4;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
+  background-color: #fffbf4;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-    font-family: Love_Ya_Like_A_Sister;
-    text-align: center;
+  font-family: Love_Ya_Like_A_Sister;
+  text-align: center;
 }
 .App {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  text-align: center;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap; */
+  height: 100vh;
+  display: grid;
+  grid-template-rows: repeat(8, 12.5vh);
 }
 
 button {
-    margin-top: 50px;
-    border: none;
-    border-radius: 30px;
-    background-color: #22223B;
-    padding: 10px 25px;
-    color: #fffbf4;
-    font-size: 17px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 50px;
+  border: none;
+  border-radius: 30px;
+  background-color: #22223b;
+  padding: 10px 25px;
+  color: #fffbf4;
+  font-size: 17px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 30vw;
 }
 
 
 /* ColorsPalette CSS */
 
 .color-palette {
-    display: flex;
-    flex-wrap: nowrap;
-    /* gap: 20px; */
-    flex-direction: row;
-    width: 100vw;
+  display: flex;
+  flex-wrap: nowrap;
+  /* gap: 20px; */
+  flex-direction: row;
+  width: 100vw;
 }
+
 .color-block {
-    flex: 1;
-    /* width: 20vw; */
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-weight: 600;
-    /* border-radius: 10px; */
-    /* box-shadow: 0px 9px 8px 0px rgba(0, 0, 0, 0.2); */
-  }
-  
+  flex: 1;
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
 .color-code {
-    font-size: 20px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 1);
+  font-size: 20px;
+  text-shadow: 0 1px 2px #000000;
+}
+
+
+/* Forms CSS */
+
+.form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  row-gap: 1em;
+  margin: 30px 0;
+  font-family: Love_Ya_Like_A_Sister;
+}
+
+input[type=submit]{
+    color: #fffbf4;
+    background-color: #22223b;
+    border-radius: 18px;
+    padding: 10px 20px;
 }
