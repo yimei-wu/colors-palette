@@ -1,9 +1,10 @@
 const switchColorProfile = (baseColorMode, baseColor) => {
   switch (baseColorMode) {
     case "hex":
+      baseColor = baseColor.replace("#", "");
       return { hex: { value: "#" + baseColor } };
     case "hsl":
-      baseColor = baseColor.replace(/([hsl]|\(|\))/g, "").split(",");
+      baseColor = baseColor.replace(/([hsl%]|\(|\))/g, "").split(",");
       return {
         hsl: {
           value:

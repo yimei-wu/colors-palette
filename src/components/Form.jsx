@@ -1,15 +1,12 @@
 import { useState } from "react";
 import switchColorProfile from "./SwitchColorProfile";
 
-const hexValidateInput = /^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/;
+const hexValidateInput = /^[#]?[a-fA-F0-9]{6}$/i;
 
 const hslValidateInput =
   /^(hsl\(\s*)?(\(\s*)?\d{1,3}\s*,\s*\d{1,3}%\s*,\s*\d{1,3}%\s*(\)\s*)?$/;
 
-// TO DO -- fix regex for rgb
-const rgbValidateInput =
-  /^rgb\((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?),\s*(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?),\s*(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\)$/;
-
+const rgbValidateInput = /^(rgb\s*)?(\([^)]*\)|[0-9]+(?:,\s*[0-9]+){2})$/;
 const Form = ({ setPalette, setUserColor }) => {
   const [colorType, setColorType] = useState("hex");
   const [colorValue, setColorValue] = useState("");
@@ -31,9 +28,6 @@ const Form = ({ setPalette, setUserColor }) => {
         break;
     }
   };
-
-  console.log(regex);
-
   async function handleSubmit(ev) {
     ev.preventDefault();
 
