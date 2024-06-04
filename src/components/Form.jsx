@@ -1,4 +1,5 @@
 import switchColorProfile from "./SwitchColorProfile";
+import ValidateInput from "./ValidateInput";
 
 const Form = ({ setPalette, setUserColor }) => {
   async function handleSubmit(ev) {
