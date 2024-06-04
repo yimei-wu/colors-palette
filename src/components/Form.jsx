@@ -19,12 +19,11 @@ const Form = ({ setPalette, setUserColor }) => {
       .then((response) => response.json())
       .then((data) => {
         setUserColor(color);
-        let newPalette = [{ hex: { value: "#" + color } }, ...data.colors];
-        setPalette(newPalette);
-        console.log(data.colors, [
+        let newPalette = [
+          switchColorProfile(baseColorMode, color),
           ...data.colors,
-          { hex: { value: "#" + color } },
-        ]);
+        ];
+        setPalette(newPalette);
       })
       .catch((error) => console.error("Error:", error));
   }
@@ -69,3 +68,30 @@ const Form = ({ setPalette, setUserColor }) => {
 };
 
 export default Form;
+
+const switchColorProfile = (baseColorMode, baseColor) => {
+  switch (baseColorMode) {
+    case "hex":
+      return { hex: { value: "#" + baseColor } };
+    case "cmyk":
+      return;
+    case "hsl":
+      baseColor = baseColor.replace(/[()]/g, "").split(",");
+      return {
+        hsl: {
+          value:
+            "hsl(" +
+            baseColor[0] +
+            ", " +
+            baseColor[1] +
+            "%, " +
+            baseColor[2] +
+            "%)",
+        },
+      };
+    case "rgb":
+      return { rgb: { value: baseColor } };
+    default:
+      break;
+  }
+};
