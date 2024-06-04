@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <h1>Colors Palette</h1>
       <Form setPalette={setPalette} setUserColor={setUserColor} />
-      <ColorsPalette palette={palette} userColor={userColor} />
+      <ColorsPalette palette={palette} />
     </div>
   );
 }
