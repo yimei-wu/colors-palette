@@ -90,7 +90,8 @@ const switchColorProfile = (baseColorMode, baseColor) => {
         },
       };
     case "rgb":
-      return { rgb: { value: baseColor } };
+      baseColor = baseColor.replace(/[()]/g, "");
+      return { rgb: { value: "rgb(" + baseColor + ")" } };
     default:
       break;
   }
