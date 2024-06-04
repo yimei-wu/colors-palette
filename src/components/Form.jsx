@@ -2,33 +2,37 @@ import { useState } from "react";
 import switchColorProfile from "./SwitchColorProfile";
 
 const hexValidateInput = /^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/;
+
 const hslValidateInput =
-  /^hsl\((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?),\s*(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?),\s*(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\)$/;
+  /^(hsl\(\s*)?(\(\s*)?\d{1,3}\s*,\s*\d{1,3}%\s*,\s*\d{1,3}%\s*(\)\s*)?$/;
+
+// TO DO -- fix regex for rgb
 const rgbValidateInput =
   /^rgb\((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?),\s*(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?),\s*(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\)$/;
 
 const Form = ({ setPalette, setUserColor }) => {
   const [colorType, setColorType] = useState("hex");
   const [colorValue, setColorValue] = useState("");
-  const [isValidColor, setIsValidColor] = useState(true);
+  const [regex, setRegex] = useState(null);
 
-  const validateColorInput = () => {
-    let isValid = true;
-    switch (colorType) {
+  const switchRegexForColorMode = (colorMode) => {
+    switch (colorMode) {
       case "hex":
-        isValid = hexValidateInput.test(colorValue);
+        setRegex(hexValidateInput);
         break;
       case "hsl":
-        isValid = hslValidateInput.test(colorValue);
+        setRegex(hslValidateInput);
         break;
       case "rgb":
-        isValid = rgbValidateInput.test(colorValue);
+        setRegex(rgbValidateInput);
         break;
       default:
-        isValid = false;
+        setRegex(null);
+        break;
     }
-    setIsValidColor(isValid);
   };
+
+  console.log(regex);
 
   async function handleSubmit(ev) {
     ev.preventDefault();
@@ -66,10 +70,8 @@ const Form = ({ setPalette, setUserColor }) => {
         <select
           name="baseColor"
           id="baseColor"
-          value={colorValue}
           onChange={(ev) => {
-            setColorValue(ev.target.value);
-            validateColorInput();
+            switchRegexForColorMode(ev.target.value);
           }}
         >
           <option value="hex" defaultValue>
@@ -78,7 +80,13 @@ const Form = ({ setPalette, setUserColor }) => {
           <option value="hsl">hsl</option>
           <option value="rgb">rgb</option>
         </select>
-        <input type="text" name="color" id="color" required />
+        <input
+          type="text"
+          name="color"
+          id="color"
+          pattern={regex ? regex.source : ""}
+          required
+        />
       </fieldset>
 
       <fieldset>
