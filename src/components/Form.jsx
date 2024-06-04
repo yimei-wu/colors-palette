@@ -35,14 +35,18 @@ const Form = ({ setPalette, setUserColor }) => {
     <form onSubmit={(ev) => handleSubmit(ev)} className="form">
       <fieldset>
         <legend>Base color</legend>
-        <input type="text" name="color" id="color" required />
-        <select name="baseColor" id="baseColor">
+        <select
+          name="baseColor"
+          id="baseColor"
+          onChange={(ev) => console.log(ev.target.value)}
+        >
           <option value="hex" defaultValue>
             hex
           </option>
           <option value="hsl">hsl</option>
           <option value="rgb">rgb</option>
         </select>
+        <input type="text" name="color" id="color" required />
       </fieldset>
 
       <fieldset>
