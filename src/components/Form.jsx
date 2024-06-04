@@ -37,7 +37,6 @@ const Form = ({ setPalette, setUserColor }) => {
           <option value="hex" defaultValue>
             hex
           </option>
-          <option value="cmyk">cmyk</option>
           <option value="hsl">hsl</option>
           <option value="rgb">rgb</option>
         </select>
@@ -73,10 +72,8 @@ const switchColorProfile = (baseColorMode, baseColor) => {
   switch (baseColorMode) {
     case "hex":
       return { hex: { value: "#" + baseColor } };
-    case "cmyk":
-      return;
     case "hsl":
-      baseColor = baseColor.replace(/[()]/g, "").split(",");
+      baseColor = baseColor.replace(/([hsl]|\(|\))/g, "").split(",");
       return {
         hsl: {
           value:
@@ -90,7 +87,7 @@ const switchColorProfile = (baseColorMode, baseColor) => {
         },
       };
     case "rgb":
-      baseColor = baseColor.replace(/[()]/g, "");
+      baseColor = baseColor.replace(/([rgb]|\(|\))/g, "");
       return { rgb: { value: "rgb(" + baseColor + ")" } };
     default:
       break;
