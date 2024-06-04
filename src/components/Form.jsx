@@ -1,7 +1,35 @@
+import { useState } from "react";
 import switchColorProfile from "./SwitchColorProfile";
-import ValidateInput from "./ValidateInput";
+
+const hexValidateInput = /^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/;
+const hslValidateInput =
+  /^hsl\((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?),\s*(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?),\s*(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\)$/;
+const rgbValidateInput =
+  /^rgb\((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?),\s*(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?),\s*(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\)$/;
 
 const Form = ({ setPalette, setUserColor }) => {
+  const [colorType, setColorType] = useState("hex");
+  const [colorValue, setColorValue] = useState("");
+  const [isValidColor, setIsValidColor] = useState(true);
+
+  const validateColorInput = () => {
+    let isValid = true;
+    switch (colorType) {
+      case "hex":
+        isValid = hexValidateInput.test(colorValue);
+        break;
+      case "hsl":
+        isValid = hslValidateInput.test(colorValue);
+        break;
+      case "rgb":
+        isValid = rgbValidateInput.test(colorValue);
+        break;
+      default:
+        isValid = false;
+    }
+    setIsValidColor(isValid);
+  };
+
   async function handleSubmit(ev) {
     ev.preventDefault();
 
@@ -38,7 +66,11 @@ const Form = ({ setPalette, setUserColor }) => {
         <select
           name="baseColor"
           id="baseColor"
-          onChange={(ev) => console.log(ev.target.value)}
+          value={colorValue}
+          onChange={(ev) => {
+            setColorValue(ev.target.value);
+            validateColorInput();
+          }}
         >
           <option value="hex" defaultValue>
             hex
