@@ -1,3 +1,5 @@
+import switchColorProfile from "./SwitchColorProfile";
+
 const Form = ({ setPalette, setUserColor }) => {
   async function handleSubmit(ev) {
     ev.preventDefault();
@@ -67,29 +69,3 @@ const Form = ({ setPalette, setUserColor }) => {
 };
 
 export default Form;
-
-const switchColorProfile = (baseColorMode, baseColor) => {
-  switch (baseColorMode) {
-    case "hex":
-      return { hex: { value: "#" + baseColor } };
-    case "hsl":
-      baseColor = baseColor.replace(/([hsl]|\(|\))/g, "").split(",");
-      return {
-        hsl: {
-          value:
-            "hsl(" +
-            baseColor[0] +
-            ", " +
-            baseColor[1] +
-            "%, " +
-            baseColor[2] +
-            "%)",
-        },
-      };
-    case "rgb":
-      baseColor = baseColor.replace(/([rgb]|\(|\))/g, "");
-      return { rgb: { value: "rgb(" + baseColor + ")" } };
-    default:
-      break;
-  }
-};
