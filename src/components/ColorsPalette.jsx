@@ -1,10 +1,13 @@
 const ColorsPalette = ({ palette }) => {
+
   const colorMode = palette.length > 0 ? Object.keys(palette[0])[0] : null;
+
 
   return (
     <div className="color-palette">
       {palette.length > 0 && (
         <>
+
           {palette.map((color, index) => {
             // console.log(color[colorMode]);
             return (
@@ -17,6 +20,7 @@ const ColorsPalette = ({ palette }) => {
               </div>
             );
           })}
+
         </>
       )}
     </div>

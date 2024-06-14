@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import switchColorProfile from "./SwitchColorProfile";
 
@@ -34,6 +35,7 @@ const Form = ({ setPalette, setUserColor }) => {
     switchRegexForColorMode("hex");
   }, [colorType]);
 
+
   async function handleSubmit(ev) {
     ev.preventDefault();
 
@@ -46,16 +48,19 @@ const Form = ({ setPalette, setUserColor }) => {
     const count = ev.target.count.value;
 
     await fetch(
+
       `https://www.thecolorapi.com/scheme?${baseColorMode}=${color.replace(
         "#",
         ""
       )}&format=json&mode=${schemeMode}&count=${count}`,
+
       {
         method: "GET",
       }
     )
       .then((response) => response.json())
       .then((data) => {
+
         setUserColor(color);
 
         let newPalette = [
@@ -63,6 +68,7 @@ const Form = ({ setPalette, setUserColor }) => {
           ...data.colors,
         ];
         setPalette(newPalette);
+
       })
       .catch((error) => console.error("Error:", error));
   }
@@ -71,6 +77,7 @@ const Form = ({ setPalette, setUserColor }) => {
     <form onSubmit={(ev) => handleSubmit(ev)} className="form">
       <fieldset>
         <legend>Base color</legend>
+
         <select
           name="baseColor"
           id="baseColor"
@@ -91,6 +98,7 @@ const Form = ({ setPalette, setUserColor }) => {
           pattern={regex ? regex.source : ""}
           required
         />
+
       </fieldset>
 
       <fieldset>
@@ -108,7 +116,9 @@ const Form = ({ setPalette, setUserColor }) => {
       </fieldset>
 
       <fieldset>
+
         <legend>How many colors do you need beyond your one?</legend>
+
         <input name="count" id="count" type="number" min={2} max={6} required />
       </fieldset>
 
