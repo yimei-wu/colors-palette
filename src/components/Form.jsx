@@ -46,7 +46,10 @@ const Form = ({ setPalette, setUserColor }) => {
     const count = ev.target.count.value;
 
     await fetch(
-      `https://www.thecolorapi.com/scheme?${baseColorMode}=${color}&format=json&mode=${schemeMode}&count=${count}`,
+      `https://www.thecolorapi.com/scheme?${baseColorMode}=${color.replace(
+        "#",
+        ""
+      )}&format=json&mode=${schemeMode}&count=${count}`,
       {
         method: "GET",
       }
@@ -54,6 +57,7 @@ const Form = ({ setPalette, setUserColor }) => {
       .then((response) => response.json())
       .then((data) => {
         setUserColor(color);
+
         let newPalette = [
           switchColorProfile(baseColorMode, color),
           ...data.colors,
