@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import switchColorProfile from "./SwitchColorProfile";
 
 const hexValidateInput = /^[#]?[a-fA-F0-9]{6}$/i;
@@ -7,6 +7,7 @@ const hslValidateInput =
   /^(hsl\(\s*)?(\(\s*)?\d{1,3}\s*,\s*\d{1,3}%\s*,\s*\d{1,3}%\s*(\)\s*)?$/;
 
 const rgbValidateInput = /^(rgb\s*)?(\([^)]*\)|[0-9]+(?:,\s*[0-9]+){2})$/;
+
 const Form = ({ setPalette, setUserColor }) => {
   const [colorType, setColorType] = useState("hex");
   const [colorValue, setColorValue] = useState("");
@@ -28,6 +29,11 @@ const Form = ({ setPalette, setUserColor }) => {
         break;
     }
   };
+
+  useEffect(() => {
+    switchRegexForColorMode("hex");
+  }, [colorType]);
+
   async function handleSubmit(ev) {
     ev.preventDefault();
 
