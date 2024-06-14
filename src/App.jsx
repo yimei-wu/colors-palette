@@ -5,10 +5,13 @@ import "./App.css";
 
 function App() {
   const [palette, setPalette] = useState([]);
+
+  const [userColor, setUserColor] = useState("");
   return (
     <div className="App">
       <h1>Colors Palette</h1>
-      <Form setPalette={setPalette} />
+      <Form setPalette={setPalette} setUserColor={setUserColor} />
+
       <ColorsPalette palette={palette} />
     </div>
   );
