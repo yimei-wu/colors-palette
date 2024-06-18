@@ -10,6 +10,10 @@ function App() {
   return (
     <div className="App">
       <h1>Colors Palette</h1>
+      <p>
+        Progetto di generatore di palette colori che utilizza API per creare
+        combinazioni cromatiche dinamiche e personalizzate
+      </p>
       <Form setPalette={setPalette} setUserColor={setUserColor} />
 
       <ColorsPalette palette={palette} />
