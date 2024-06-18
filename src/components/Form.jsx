@@ -115,7 +115,7 @@ const Form = ({ setPalette, setUserColor }) => {
         <input name="count" id="count" type="number" min={2} max={6} required />
       </fieldset>
 
-      <input type="submit" value="Generates" />
+      <input type="submit" value="Generates" className="generate" />
     </form>
   );
 };

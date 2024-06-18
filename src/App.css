@@ -24,11 +24,11 @@ p {
   flex-direction: column;
   justify-content: space-around;
   flex-wrap: wrap; */
-  height: 100vh;
-  display: grid;
-  grid-template-rows: repeat(8, 12.5vh);
+  /* height: 100vh; */
+  /* display: grid; */
+  /* grid-template-rows: repeat(8, 12.5vh); */
 }
-
+/* 
 button {
   margin-top: 50px;
   border: none;
@@ -39,8 +39,7 @@ button {
   font-size: 17px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   width: 30vw;
-}
-
+} */
 
 /* ColorsPalette CSS */
 
@@ -68,7 +67,6 @@ button {
   text-shadow: 0 1px 2px #000000;
 }
 
-
 /* Forms CSS */
 
 .form {
@@ -80,11 +78,11 @@ button {
   font-family: Love_Ya_Like_A_Sister;
 }
 
-input[type=submit]{
-    color: #fffbf4;
-    background-color: #22223b;
-    border-radius: 18px;
-    padding: 10px 20px;
+input[type="submit"] {
+  color: #fffbf4;
+  background-color: #22223b;
+  border-radius: 18px;
+  padding: 10px 20px;
 }
 
 /* MEDIA QUERY */
@@ -137,4 +135,12 @@ input[type=submit]{
   p {
     font-size: 17px;
   }
+}
+
+.color-picker-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 8px solid blue;
 }
