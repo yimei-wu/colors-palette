@@ -4,28 +4,14 @@
 
 ## Description
 
-As the title says, it's a colors palette generator, with a previous multi-step-form where you're asked about your preferences. The form is composed in two steps.
+As the title says, it's a colors palette generator that uses API to create dynamic and personalized color combinations, where you can choose your preferences and put your own color.
 
-### Step 1: General Preferences
+### General Preferences
 
 1. What kind of palette do you need?
 
-- Answer: Monochromatic, Analogue, Complementary, Triadic, Tetradic
+- Answer: Monochrome, Monochrome-Dark, Monochrome-Light, Analogic, Complement, Analogic-Complement, Triad, Quad
 
-2. What is the main use of the palette?
+2. How many colors would you like in your palette?
 
-- Answer: Web Design, Branding, Illustration, UI/UX, Other...
-
-3. How many colors would you like in your palette?
-
-- Answer: 2, 3, 4, 5, Other...
-
-### Step 2: Favorite Color
-
-1. Do you have a base color you want to include in the palette?
-
-- Answer: Color input (color picker)
-
-2. Do you have any other specific colors you'd like to include? (optional)
-
-- Answer: Color input (color picker) for multiple colors
+- Answer: 2, 3, 4, 5, 6

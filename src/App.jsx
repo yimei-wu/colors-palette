@@ -7,7 +7,8 @@ import ColorPicker from "./components/ColorPicker";
 function App() {
   const [palette, setPalette] = useState([]);
   const [userColor, setUserColor] = useState("");
-
+  const [colorModeInput, setColorModeInput] = useState("hex");
+  // console.log(colorModeInput);
   return (
     <div className="App">
       <h1>Colors Palette</h1>
@@ -16,9 +17,18 @@ function App() {
         combinazioni cromatiche dinamiche e personalizzate
       </p>
 
-      <Form setPalette={setPalette} setUserColor={setUserColor} />
+      <Form
+        setPalette={setPalette}
+        setUserColor={setUserColor}
+        setColorModeInput={setColorModeInput}
+        userColor={userColor}
+      />
       <ColorsPalette palette={palette} />
-      <ColorPicker />
+      <ColorPicker
+        userColor={userColor}
+        setUserColor={setUserColor}
+        colorModeInput={colorModeInput}
+      />
     </div>
   );
 }

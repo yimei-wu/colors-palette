@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import switchColorProfile from "./SwitchColorProfile";
+// import ColorPicker from "./ColorPicker";
 
 const hexValidateInput = /^[#]?[a-fA-F0-9]{6}$/i;
 
@@ -8,20 +9,27 @@ const hslValidateInput =
 
 const rgbValidateInput = /^(rgb\s*)?(\([^)]*\)|[0-9]+(?:,\s*[0-9]+){2})$/;
 
-const Form = ({ setPalette, setUserColor }) => {
-  const [colorType, setColorType] = useState("hex");
-  const [colorValue, setColorValue] = useState("");
+const Form = ({
+  setPalette,
+  setUserColor,
+  setColorModeInput,
+  colorModeInput,
+  userColor,
+}) => {
   const [regex, setRegex] = useState(null);
 
   const switchRegexForColorMode = (colorMode) => {
     switch (colorMode) {
       case "hex":
+        setColorModeInput("hex");
         setRegex(hexValidateInput);
         break;
       case "hsl":
+        setColorModeInput("hsl");
         setRegex(hslValidateInput);
         break;
       case "rgb":
+        setColorModeInput("rgb");
         setRegex(rgbValidateInput);
         break;
       default:
@@ -32,7 +40,7 @@ const Form = ({ setPalette, setUserColor }) => {
 
   useEffect(() => {
     switchRegexForColorMode("hex");
-  }, [colorType]);
+  }, [colorModeInput]);
 
   async function handleSubmit(ev) {
     ev.preventDefault();
@@ -90,7 +98,9 @@ const Form = ({ setPalette, setUserColor }) => {
           type="text"
           name="color"
           id="color"
+          value={userColor}
           pattern={regex ? regex.source : ""}
+          onChange={(e) => setUserColor(e.target.value)}
           required
         />
       </fieldset>

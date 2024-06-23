@@ -16,7 +16,7 @@ h1 {
   text-align: center;
 }
 p {
-  font-size: 20px;
+  font-size: 1.4rem;
 }
 .App {
   text-align: center;
@@ -24,11 +24,11 @@ p {
   flex-direction: column;
   justify-content: space-around;
   flex-wrap: wrap; */
-  /* height: 100vh; */
-  /* display: grid; */
-  /* grid-template-rows: repeat(8, 12.5vh); */
+  height: 100vh;
+  display: grid;
+  grid-template-rows: repeat(8, 12.5vh);
 }
-/* 
+
 button {
   margin-top: 50px;
   border: none;
@@ -39,7 +39,7 @@ button {
   font-size: 17px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   width: 30vw;
-} */
+}
 
 /* ColorsPalette CSS */
 
@@ -76,6 +76,8 @@ button {
   row-gap: 1em;
   margin: 30px 0;
   font-family: Love_Ya_Like_A_Sister;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 input[type="submit"] {
@@ -89,6 +91,7 @@ input[type="submit"] {
 
 @media (max-width: 1000px) {
   .form {
+    grid-row-end: -6;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -127,20 +130,26 @@ input[type="submit"] {
     margin-top: 0;
   }
   p {
-    font-size: 18px;
+    font-size: 1.3rem;
   }
 }
-
-@media (max-width: 390px) {
+@media (max-width: 425px) {
   p {
-    font-size: 17px;
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 396px) {
+  p {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 370px) {
+  p {
+    font-size: 1rem;
   }
 }
 
+/* 
 .color-picker-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 8px solid blue;
-}
+  grid-row-start: 5;
+} */
